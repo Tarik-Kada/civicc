@@ -51,9 +51,9 @@ node_st *ICvar(node_st *node)
     if (value != NULL) {
         *value += 1;
     } else {
-        int *temp = MEMmalloc(sizeof(int));
-        *temp = 1;
-        value = temp;
+        int *tmp = MEMmalloc(sizeof(int));
+        *tmp = 1;
+        value = tmp;
     }
     HTinsert(data->id_table, VAR_NAME(node), value);
     return node;
@@ -70,9 +70,9 @@ node_st *ICvarlet(node_st *node)
     if (value != NULL) {
         *value += 1;
     } else {
-        int *temp = MEMmalloc(sizeof(int));
-        *temp = 1;
-        value = temp;
+        int *tmp = MEMmalloc(sizeof(int));
+        *tmp = 1;
+        value = tmp;
     }
     HTinsert(data->id_table, VARLET_NAME(node), value);
     return node;

@@ -13,6 +13,20 @@
 #include "palm/dbug.h"
 
 /**
+ * @fn PRTmodule
+ */
+node_st *PRTmodule(node_st *node)
+{
+    printf("Arithmetic counts:\n");
+    printf("Add operations: %d\n", MODULE_ADD(node));
+    printf("Sub operations: %d\n", MODULE_SUB(node));
+    printf("Mul operations: %d\n", MODULE_MUL(node));
+    printf("Div operations: %d\n", MODULE_DIV(node));
+    printf("Mod operations: %d\n", MODULE_MOD(node));
+    return node;
+}
+
+/**
  * @fn PRTstmts
  */
 node_st *PRTstmts(node_st *node)

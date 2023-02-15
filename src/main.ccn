@@ -3,6 +3,7 @@ start phase EntryPoint {
     
     actions {
         pass SPdoScanParse;
+        Assignments;
         Demo;
         Print;
     }
@@ -12,8 +13,37 @@ traversal Print {
     uid = PRT
 };
 
+phase Assignments {
+    actions {
+        traversal ArithmeticCount {
+            uid = AC,
+            nodes = { Binop, Module },
+            travdata {
+                int add,
+                int sub,
+                int mul,
+                int div,
+                int mod
+            }
+        };
+
+        traversal IdentifierCount {
+            uid = IC,
+            nodes = { Var, VarLet },
+            travdata {
+                user htable_ptr id_table
+            }
+        };
+
+        traversal StrengthReduction {
+            uid = SR,
+            nodes = { Binop }
+        };
+    }
+};
+
 phase Demo {
-    actions { 
+    actions {
         traversal RenameIdentifiers {
             uid = RI,
             nodes = { Var, VarLet }
@@ -58,7 +88,21 @@ nodeset Stmt = {Assign};
 // Nodes you want to be able to link to from your symbol table.
 nodeset Link = Expr | Stmt;
 
-root node Stmts {
+root node Module {
+    children {
+        Stmts stmt { constructor, mandatory }
+    },
+
+    attributes {
+        int add,
+        int sub,
+        int mul,
+        int div,
+        int mod
+    }
+};
+
+node Stmts {
     children {
         Stmt stmt { constructor, mandatory },
         Stmts next { constructor }

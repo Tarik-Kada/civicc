@@ -4,7 +4,6 @@ start phase EntryPoint {
     actions {
         pass SPdoScanParse;
         Assignments;
-        Demo;
         Print;
     }
 };

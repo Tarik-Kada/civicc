@@ -23,6 +23,7 @@ node_st *PRTmodule(node_st *node)
     printf("Mul operations: %d\n", MODULE_MUL(node));
     printf("Div operations: %d\n", MODULE_DIV(node));
     printf("Mod operations: %d\n", MODULE_MOD(node));
+    TRAVchildren(node);
     return node;
 }
 

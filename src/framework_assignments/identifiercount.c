@@ -34,8 +34,8 @@ void ICfini()
 {
     printf("Identifier count:\n");
     struct data_ic *data = DATA_IC_GET();
-    HTmapWithKey(data->id_table, (mapk_ft) print_table);
-    HTmapWithKey(data->id_table, (mapk_ft) free_values);
+    HTmapWithKey(data->id_table, print_table);
+    HTmapWithKey(data->id_table, free_values);
     HTdelete(data->id_table);
     return;
 }
